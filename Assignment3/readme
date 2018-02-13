@@ -1,1 +1,13 @@
+This Program implements a programmable interval timer,by forcing values into PIT registers 0x40 and 0x43
+The function timer_set-Initialises values to timer registers
+readtime()-reads the current value of timer registers
+Sleep is implemented by a for loop delay 
+User function accesses the count value through read()system call
+Commands to execute the module are:
+sudo mknod /dev/Timer0 c 100 3
+make all
+sudo insmod pit.ko
+sudo chmod 777 /dev/Timer0
+gcc user.c -o user
+./user
 
