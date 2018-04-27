@@ -84,7 +84,7 @@ static int lcd_open(struct inode *inode, struct file *file)
 int lcd_release(struct inode *inode, struct file *file)
 {
 	struct usb_lcd *dev;
-module_put(THIS_MODULE);
+        module_put(THIS_MODULE);
 	dev = (struct usb_lcd *)file->private_data;
 	if (dev == NULL)
 		return -ENODEV;
@@ -101,66 +101,104 @@ ssize_t lcd_write(struct file *file,const char __user *puser,size_t length,loff_
   	struct usb_device *dev=NULL;
   	for(i=0;i<length && i<BUF_LEN;i++)
 	{
-	get_user(Message[i],puser+i);
+	  get_user(Message[i],puser+i);
 	}
         Message_Ptr=Message;
-	if(strcmp(Message_Ptr,"LCD_CLEAR_DISP")==0){
+	if(strcmp(Message_Ptr,"LCD_CLEAR_DISP")==0)
+	{
 	q.val1=1;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr,"LCD_CURSOR_HOME")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr,"LCD_CURSOR_HOME")==0)
+	{
 	q.val1=2;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-        else if(strcmp(Message_Ptr,"LCD_ENTRY_DEC")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+        else if(strcmp(Message_Ptr,"LCD_ENTRY_DEC")==0)
+	{
 	q.val1=4;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr,"LCD_ENTRY_DEC_SHIFT")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr,"LCD_ENTRY_DEC_SHIFT")==0)
+	{
 	q.val1=5;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr,"LCD_ENTRY_INC_")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr,"LCD_ENTRY_INC_")==0)
+	{
 	q.val1=6;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-        else if(strcmp(Message_Ptr,"LCD_ENTRY_INC_SHIFT")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+        else if(strcmp(Message_Ptr,"LCD_ENTRY_INC_SHIFT")==0)
+	{
 	q.val1=7;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-        else if(strcmp(Message_Ptr,"LCD_DISP_OFF")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+        else if(strcmp(Message_Ptr,"LCD_DISP_OFF")==0)
+	{
 	q.val1=8;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-        else if(strcmp(Message_Ptr,"LCD_DISP_ON")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+        else if(strcmp(Message_Ptr,"LCD_DISP_ON")==0)
+	{
 	q.val1=12;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr,"LCD_DISP_ON_BLINK")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr,"LCD_DISP_ON_BLINK")==0)
+	{
 	q.val1=13;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-        else if(strcmp(Message_Ptr,"LCD_DISP_ON_CURSOR")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+        else if(strcmp(Message_Ptr,"LCD_DISP_ON_CURSOR")==0)
+	{
 	q.val1=14;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr,"LCD_DISP_ON_CURSOR_BLINK")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr,"LCD_DISP_ON_CURSOR_BLINK")==0)
+	{
 	q.val1=15;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr,"LCD_MOVE_CURSOR_LEFT")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr,"LCD_MOVE_CURSOR_LEFT")==0)
+	{
 	q.val1=16;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr,"LCD_MOVE_CURSOR_RIGHT")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr,"LCD_MOVE_CURSOR_RIGHT")==0)
+	{
 	q.val1=20;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-        else if(strcmp(Message_Ptr,"LCD_MOVE_DISP_LEFT")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+        else if(strcmp(Message_Ptr,"LCD_MOVE_DISP_LEFT")==0)
+	{
 	q.val1=24;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-        else if(strcmp(Message_Ptr,"LCD_MOVE_DISP_RIGHT")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+        else if(strcmp(Message_Ptr,"LCD_MOVE_DISP_RIGHT")==0)
+	{
 	q.val1=28;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-        else if(strcmp(Message_Ptr,"LCD_FUNCTION_4BIT_1LINE")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+        else if(strcmp(Message_Ptr,"LCD_FUNCTION_4BIT_1LINE")==0)
+	{
 	q.val1=32;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr," LCD_FUNCTION_4BIT_2LINES")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr," LCD_FUNCTION_4BIT_2LINES")==0)
+	{
 	q.val1=40;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr," LCD_FUNCTION_8BIT_1LINE")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr," LCD_FUNCTION_8BIT_1LINE")==0)
+	{
 	q.val1=48;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
-	else if(strcmp(Message_Ptr," LCD_FUNCTION_8BIT_2LINES")==0){
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
+	else if(strcmp(Message_Ptr," LCD_FUNCTION_8BIT_2LINES")==0)
+	{
 	q.val1=56;
-	printk(KERN_INFO "The message is %d\n",q.val1);}
+	printk(KERN_INFO "The message is %d\n",q.val1);
+	}
 	else
 	{
 	q.val1=60;
@@ -218,7 +256,8 @@ static const struct file_operations lcd_fops = {
  * usb class driver info in order to get a minor number from the usb core,
  * and to have the device registered with the driver core
  */
-static struct usb_class_driver lcd_class = {
+static struct usb_class_driver lcd_class = 
+{
         .name =         "USBasp",
         .fops =         &lcd_fops,
         .minor_base =   USBLCD_MINOR,
@@ -266,7 +305,8 @@ static int lcd_probe(struct usb_interface *interface, const struct usb_device_id
    	}
 	/*allocate memory for usb device*/
 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
-	if (dev == NULL) {
+	if (dev == NULL)
+	{
 		printk(KERN_INFO "Out of memory");
 	}
 	kref_init(&dev->kref);
@@ -322,7 +362,7 @@ int usb_lcd_init(void)
 	/*register usb device*/
 	result = usb_register(&lcd_driver);
 	if (result)
-		printk(KERN_INFO "usb_register failed. Error number %d", 			result);
+	printk(KERN_INFO "usb_register failed. Error number %d", 			result);
 	return result;
 }
 /*usb_lcd*exit cleans up the module on exit*/
