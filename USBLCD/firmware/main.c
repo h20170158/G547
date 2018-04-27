@@ -116,8 +116,8 @@ USB_PUBLIC uchar usbFunctionWrite(uchar *data,uchar len)
 }
 int main(void)
 {
-	  uchar   i;
-	  uchar controller=0;
+    uchar   i;
+    uchar controller=0;
     wdt_enable(WDTO_1S);/*Enable watch dog timer*/
     odDebugInit();
     DDRB = ~(_BV(6)|_BV(7));/*PB6 and PB7 are not output pins.Hence it is disabled*/
